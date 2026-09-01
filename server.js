@@ -56,7 +56,7 @@ app.disable('x-powered-by');
 let sessionStore;
 if (REDIS_URL) {
   const { createClient } = require('redis');
-  const RedisStore = require('connect-redis').default;
+  const { RedisStore } = require('connect-redis');
   const redisClient = createClient({ url: REDIS_URL });
   redisClient.connect().catch((e) => console.error('[Redis] Verbindung fehlgeschlagen:', e.message));
   sessionStore = new RedisStore({ client: redisClient, prefix: 'sess:' });
