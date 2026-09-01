@@ -54,32 +54,4 @@ function draw() {
 }
 draw();
 
-async function loadDiscordSession() {
-  try {
-    const res = await fetch('/api/me', { credentials: 'same-origin' });
-    const data = await res.json();
-    const area = document.getElementById('discord-auth-area');
-
-    if (data.user) {
-      area.innerHTML = `
-        <div class="user-chip">
-          <img src="${data.user.avatarUrl}" alt="${data.user.username}" />
-          <span>${data.user.username}</span>
-          <button id="logout-btn">Logout</button>
-        </div>`;
-      document.getElementById('logout-btn').addEventListener('click', async () => {
-        await fetch('/auth/logout', { method: 'POST', credentials: 'same-origin' });
-        window.location.reload();
-      });
-    } else {
-      document.getElementById('discord-login-btn')?.addEventListener('click', () => {
-        window.location.href = '/auth/discord/login';
-      });
-    }
-  } catch (e) {
-    console.error('Session konnte nicht geladen werden', e);
-  }
-}
-loadDiscordSession();
-
 document.getElementById('year').textContent = new Date().getFullYear();
