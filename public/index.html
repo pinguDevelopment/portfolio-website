@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dein Name — Portfolio</title>
+<meta name="description" content="Portfolio von Dein Name — Softwareentwickler, Discord-Bots, Self-Hosting" />
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<nav class="navbar">
+  <div class="logo">DEIN<span>NAME</span></div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#hobbies">Hobbies</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div id="discord-auth-area" class="discord-auth-area">
+    <button id="discord-login-btn" class="btn-discord">Mit Discord anmelden</button>
+  </div>
+</nav>
+
+<header id="home" class="hero">
+  <div class="hero-content">
+    <p class="hero-tag">// Softwareentwickler &amp; Self-Hoster</p>
+    <h1>Hi, ich bin <span class="glow">Dein Name</span></h1>
+    <p class="hero-sub">Ich baue Discord-Bots, Web-Dashboards und Self-Hosting-Setups aus Karlsruhe.</p>
+    <div class="hero-buttons">
+      <a href="#portfolio" class="btn-primary">Projekte ansehen</a>
+      <a href="#contact" class="btn-outline">Kontakt</a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="section">
+  <h2 class="section-title">About Me</h2>
+  <div class="glass-card">
+    <p>Hey! Ich bin <strong>Dein Name</strong>, ich entwickle Discord-Bots, Web-Dashboards und
+    Self-Hosting-Setups mit Docker, Raspberry Pi und Cloudflare Tunnels.</p>
+  </div>
+</section>
+
+<section id="hobbies" class="section">
+  <h2 class="section-title">Hobbies</h2>
+  <div class="card-grid">
+    <div class="glass-card"><h3>Gaming</h3><p>Minecraft-Server &amp; Plugin-Entwicklung, Valorant.</p></div>
+    <div class="glass-card"><h3>Home-Lab</h3><p>Docker, Raspberry Pi, Netzwerk-Experimente.</p></div>
+    <div class="glass-card"><h3>Coding</h3><p>Discord-Bots, Skripte, Web-Dashboards.</p></div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <h2 class="section-title">Frameworks &amp; Technologies</h2>
+  <div class="skills-grid">
+    <span class="pill">Java</span><span class="pill">Python</span><span class="pill">JavaScript</span>
+    <span class="pill">Node.js</span><span class="pill">Discord.js / JDA</span><span class="pill">Docker</span>
+    <span class="pill">Linux</span><span class="pill">PowerShell</span><span class="pill">HTML/CSS</span>
+  </div>
+</section>
+
+<section id="portfolio" class="section">
+  <h2 class="section-title">Portfolio</h2>
+  <div class="card-grid">
+    <div class="glass-card project">
+      <h3>Discord Music Bot</h3>
+      <p>Java-Bot mit JDA &amp; Lavalink fuer Musik-Streaming in Sprachkanaelen.</p>
+      <a href="#" target="_blank" rel="noopener">GitHub →</a>
+    </div>
+    <div class="glass-card project">
+      <h3>Web Dashboard</h3>
+      <p>Flask/Node-Dashboard zur Server-Verwaltung mit OAuth2-Login.</p>
+      <a href="#" target="_blank" rel="noopener">GitHub →</a>
+    </div>
+    <div class="glass-card project">
+      <h3>Minecraft Plugin</h3>
+      <p>Paper/Spigot-Plugin mit Custom-Mechaniken.</p>
+      <a href="#" target="_blank" rel="noopener">GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<section id="discord-presence" class="section">
+  <h2 class="section-title">Discord Status</h2>
+  <div class="glass-card discord-widget">
+    <img id="lanyard-badge" src="https://lanyard.cnrad.dev/api/DEINE_DISCORD_ID?theme=dark&bg=tr&animated=true"
+         alt="Live Discord Presence" loading="lazy" />
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <h2 class="section-title">Contact</h2>
+  <div class="glass-card">
+    <p>Erreichbar per <a href="mailto:kontakt@deinedomain.de">E-Mail</a> oder ueber den Discord-Login oben.</p>
+  </div>
+</section>
+
+<footer>
+  <p>© <span id="year"></span> Dein Name. Gebaut mit Sicherheit &amp; Liebe zum Detail.</p>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>

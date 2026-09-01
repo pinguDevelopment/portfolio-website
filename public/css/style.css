@@ -1,0 +1,60 @@
+:root {
+  --bg: #05070d;
+  --neon-cyan: #00e5ff;
+  --neon-purple: #a855f7;
+  --neon-pink: #ff2d95;
+  --text: #e6f1ff;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; overflow-x: hidden; }
+#bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+
+.navbar { position: fixed; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2.5rem; backdrop-filter: blur(12px); background: rgba(5, 7, 13, 0.6); border-bottom: 1px solid var(--glass-border); z-index: 100; }
+.logo { font-weight: 800; font-size: 1.3rem; letter-spacing: 1px; }
+.logo span { color: var(--neon-cyan); }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+.nav-links a { color: var(--text); text-decoration: none; font-size: 0.95rem; transition: color 0.25s; }
+.nav-links a:hover { color: var(--neon-cyan); }
+
+.btn-discord { display: flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #5865f2, #7289da); color: white; border: none; border-radius: 999px; padding: 0.55rem 1.2rem; font-weight: 600; cursor: pointer; box-shadow: 0 0 15px rgba(88, 101, 242, 0.5); transition: transform 0.2s, box-shadow 0.2s; }
+.btn-discord:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(88, 101, 242, 0.8); }
+
+.user-chip { display: flex; align-items: center; gap: 0.6rem; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 999px; padding: 0.3rem 1rem 0.3rem 0.3rem; }
+.user-chip img { width: 32px; height: 32px; border-radius: 50%; }
+.user-chip button { background: none; border: none; color: var(--neon-pink); cursor: pointer; font-size: 0.85rem; }
+
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 1.5rem; }
+.hero-tag { color: var(--neon-cyan); font-family: monospace; margin-bottom: 1rem; }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; }
+.glow { color: var(--neon-cyan); text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-purple); }
+.hero-sub { margin-top: 1rem; font-size: 1.15rem; color: #a9b8d1; max-width: 600px; margin-inline: auto; }
+.hero-buttons { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; }
+
+.btn-primary, .btn-outline { padding: 0.8rem 1.8rem; border-radius: 999px; text-decoration: none; font-weight: 600; transition: all 0.25s; }
+.btn-primary { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); color: #05070d; box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(0, 229, 255, 0.7); }
+.btn-outline { border: 1px solid var(--glass-border); color: var(--text); }
+.btn-outline:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); }
+
+.section { max-width: 1100px; margin: 0 auto; padding: 6rem 1.5rem; }
+.section-title { font-size: 2rem; margin-bottom: 2rem; border-left: 4px solid var(--neon-cyan); padding-left: 0.8rem; }
+
+.glass-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.8rem; backdrop-filter: blur(10px); transition: transform 0.25s, box-shadow 0.25s; }
+.glass-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0, 229, 255, 0.15); }
+
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.project a { color: var(--neon-cyan); text-decoration: none; font-weight: 600; }
+
+.skills-grid { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.pill { background: var(--glass); border: 1px solid var(--glass-border); padding: 0.5rem 1.2rem; border-radius: 999px; font-size: 0.9rem; }
+
+.discord-widget { display: flex; justify-content: center; }
+.discord-widget img { max-width: 100%; border-radius: 12px; }
+
+footer { text-align: center; padding: 2rem; color: #6b7a99; border-top: 1px solid var(--glass-border); }
+
+@media (max-width: 768px) { .nav-links { display: none; } .navbar { padding: 1rem 1.2rem; } }
