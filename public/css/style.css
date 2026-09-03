@@ -84,7 +84,7 @@ code, pre { font-family: var(--font-display); }
   z-index: 100;
 }
 
-.logo { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-300); letter-spacing: 0.02em; color: var(--color-text); text-decoration: none; }
+.logo { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-300); letter-spacing: 0.04em; color: var(--color-text); text-decoration: none; }
 .logo span { color: var(--color-accent-terminal); }
 
 .nav-links { display: flex; gap: var(--space-5); }
@@ -108,13 +108,6 @@ code, pre { font-family: var(--font-display); }
 
 .btn--outline { border: 1px solid var(--color-border); color: var(--color-text); background: transparent; }
 .btn--outline:hover { border-color: var(--color-accent-terminal); color: var(--color-accent-terminal); }
-
-.btn--discord { background: var(--color-accent-discord); color: #fff; box-shadow: var(--shadow-glow-discord); }
-.btn--discord:hover { box-shadow: 0 0 28px rgba(88, 101, 242, 0.75); }
-
-.user-chip { display: flex; align-items: center; gap: var(--space-2); background: var(--color-surface-alt); border: 1px solid var(--color-border); border-radius: var(--radius-full); padding: var(--space-1) var(--space-3) var(--space-1) var(--space-1); }
-.user-chip img { width: 32px; height: 32px; border-radius: 50%; }
-.user-chip button { background: none; border: none; color: var(--color-accent-discord); cursor: pointer; font-size: var(--fs-100); font-weight: 600; }
 
 .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 5rem var(--space-4) var(--space-5); }
 .hero-content { max-width: 42rem; width: 100%; }
@@ -173,8 +166,8 @@ code, pre { font-family: var(--font-display); }
   transform: translateY(-2px);
 }
 
-.discord-widget { display: flex; justify-content: center; }
-.discord-widget img { border-radius: var(--radius-md); }
+.discord-widget { display: flex; justify-content: center; padding: var(--space-3); }
+.discord-widget img { width: auto; max-width: 100%; height: auto; border-radius: var(--radius-md); }
 
 footer { text-align: center; padding: var(--space-5); color: var(--color-text-muted); border-top: 1px solid var(--color-border); font-family: var(--font-display); font-size: var(--fs-100); }
 
