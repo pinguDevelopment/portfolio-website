@@ -12,20 +12,20 @@ window.addEventListener('resize', resize);
 resize();
 
 function initParticles() {
-  const count = Math.min(90, Math.floor((canvas.width * canvas.height) / 18000));
+  const count = Math.min(70, Math.floor((canvas.width * canvas.height) / 22000));
   particles = Array.from({ length: count }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.4,
-    vy: (Math.random() - 0.5) * 0.4,
-    r: Math.random() * 1.5 + 0.5,
+    vx: (Math.random() - 0.5) * 0.35,
+    vy: (Math.random() - 0.5) * 0.35,
+    r: Math.random() * 1.4 + 0.4,
   }));
 }
 initParticles();
 
 function drawFrame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'rgba(34, 211, 238, 0.7)';
+  ctx.fillStyle = 'rgba(34, 211, 238, 0.6)';
 
   for (const p of particles) {
     if (!prefersReducedMotion) {
@@ -43,8 +43,8 @@ function drawFrame() {
     for (let j = i + 1; j < particles.length; j++) {
       const a = particles[i], b = particles[j];
       const dist = Math.hypot(a.x - b.x, a.y - b.y);
-      if (dist < 120) {
-        ctx.strokeStyle = `rgba(167, 139, 250, ${1 - dist / 120})`;
+      if (dist < 110) {
+        ctx.strokeStyle = `rgba(88, 101, 242, ${0.5 - dist / 220})`;
         ctx.lineWidth = 0.4;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
@@ -59,11 +59,7 @@ function loop() {
   drawFrame();
   if (!prefersReducedMotion) requestAnimationFrame(loop);
 }
-if (prefersReducedMotion) {
-  drawFrame();
-} else {
-  loop();
-}
+if (prefersReducedMotion) { drawFrame(); } else { loop(); }
 
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
@@ -78,6 +74,25 @@ navLinks?.querySelectorAll('a').forEach((link) =>
   })
 );
 
+function typeText(el, text, speed = 35) {
+  if (!el) return;
+  if (prefersReducedMotion) {
+    el.textContent = text;
+    return;
+  }
+  let i = 0;
+  el.textContent = '';
+  const tick = () => {
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(tick, speed);
+    }
+  };
+  tick();
+}
+typeText(document.getElementById('typed-output'), 'dein-name — Backend & Discord-Bot Developer, Karlsruhe');
+
 async function loadDiscordSession() {
   try {
     const res = await fetch('/api/me', { credentials: 'same-origin' });
@@ -89,7 +104,7 @@ async function loadDiscordSession() {
         <div class="user-chip">
           <img src="${data.user.avatarUrl}" alt="Discord-Avatar von ${data.user.username}" />
           <span>${data.user.username}</span>
-          <button id="logout-btn" type="button">Logout</button>
+          <button id="logout-btn" type="button">Abmelden</button>
         </div>`;
       document.getElementById('logout-btn').addEventListener('click', async () => {
         await fetch('/auth/logout', { method: 'POST', credentials: 'same-origin' });
