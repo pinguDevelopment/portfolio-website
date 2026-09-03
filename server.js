@@ -17,7 +17,7 @@ app.use(
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'"],
         styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-        imgSrc: ["'self'", 'data:', 'https://cdn.discordapp.com', 'https://lanyard.cnrad.dev', 'https://api.lanyard.rest', 'https://cdn.simpleicons.org'],
+        imgSrc: ["'self'", 'data:', 'https://cdn.discordapp.com', 'https://lanyard.cnrad.dev', 'https://api.lanyard.rest', 'https://cdn.simpleicons.org', 'https://api.iconify.design'],
         connectSrc: ["'self'", 'https://api.lanyard.rest', 'wss://api.lanyard.rest'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         frameAncestors: ["'none'"],
