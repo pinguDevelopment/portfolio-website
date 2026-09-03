@@ -93,33 +93,5 @@ function typeText(el, text, speed = 35) {
 }
 typeText(document.getElementById('typed-output'), 'dein-name — Backend & Discord-Bot Developer, Karlsruhe');
 
-async function loadDiscordSession() {
-  try {
-    const res = await fetch('/api/me', { credentials: 'same-origin' });
-    const data = await res.json();
-    const area = document.getElementById('discord-auth-area');
-
-    if (data.user) {
-      area.innerHTML = `
-        <div class="user-chip">
-          <img src="${data.user.avatarUrl}" alt="Discord-Avatar von ${data.user.username}" />
-          <span>${data.user.username}</span>
-          <button id="logout-btn" type="button">Abmelden</button>
-        </div>`;
-      document.getElementById('logout-btn').addEventListener('click', async () => {
-        await fetch('/auth/logout', { method: 'POST', credentials: 'same-origin' });
-        window.location.reload();
-      });
-    } else {
-      document.getElementById('discord-login-btn')?.addEventListener('click', () => {
-        window.location.href = '/auth/discord/login';
-      });
-    }
-  } catch (e) {
-    console.error('Session konnte nicht geladen werden', e);
-  }
-}
-loadDiscordSession();
-
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
