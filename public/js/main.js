@@ -91,7 +91,7 @@ function typeText(el, text, speed = 35) {
   };
   tick();
 }
-typeText(document.getElementById('typed-output'), 'dein-name — Backend & Discord-Bot Developer, Karlsruhe');
+typeText(document.getElementById('typed-output'), 'yugusaa — Backend & Discord-Bot Developer, Karlsruhe');
 
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
