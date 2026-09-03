@@ -1,3 +1,5 @@
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
@@ -21,16 +23,17 @@ function initParticles() {
 }
 initParticles();
 
-function draw() {
+function drawFrame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'rgba(0, 229, 255, 0.7)';
+  ctx.fillStyle = 'rgba(34, 211, 238, 0.7)';
 
   for (const p of particles) {
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
+    if (!prefersReducedMotion) {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    }
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fill();
@@ -41,7 +44,7 @@ function draw() {
       const a = particles[i], b = particles[j];
       const dist = Math.hypot(a.x - b.x, a.y - b.y);
       if (dist < 120) {
-        ctx.strokeStyle = `rgba(168, 85, 247, ${1 - dist / 120})`;
+        ctx.strokeStyle = `rgba(167, 139, 250, ${1 - dist / 120})`;
         ctx.lineWidth = 0.4;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
@@ -50,8 +53,58 @@ function draw() {
       }
     }
   }
-  requestAnimationFrame(draw);
 }
-draw();
 
-document.getElementById('year').textContent = new Date().getFullYear();
+function loop() {
+  drawFrame();
+  if (!prefersReducedMotion) requestAnimationFrame(loop);
+}
+if (prefersReducedMotion) {
+  drawFrame();
+} else {
+  loop();
+}
+
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+navToggle?.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+});
+navLinks?.querySelectorAll('a').forEach((link) =>
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle?.setAttribute('aria-expanded', 'false');
+  })
+);
+
+async function loadDiscordSession() {
+  try {
+    const res = await fetch('/api/me', { credentials: 'same-origin' });
+    const data = await res.json();
+    const area = document.getElementById('discord-auth-area');
+
+    if (data.user) {
+      area.innerHTML = `
+        <div class="user-chip">
+          <img src="${data.user.avatarUrl}" alt="Discord-Avatar von ${data.user.username}" />
+          <span>${data.user.username}</span>
+          <button id="logout-btn" type="button">Logout</button>
+        </div>`;
+      document.getElementById('logout-btn').addEventListener('click', async () => {
+        await fetch('/auth/logout', { method: 'POST', credentials: 'same-origin' });
+        window.location.reload();
+      });
+    } else {
+      document.getElementById('discord-login-btn')?.addEventListener('click', () => {
+        window.location.href = '/auth/discord/login';
+      });
+    }
+  } catch (e) {
+    console.error('Session konnte nicht geladen werden', e);
+  }
+}
+loadDiscordSession();
+
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();

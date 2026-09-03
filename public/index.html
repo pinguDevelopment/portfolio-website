@@ -4,15 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Dein Name — Portfolio</title>
-<meta name="description" content="Portfolio von yugusaa — Softwareentwickler, Discord-Bots, Self-Hosting" />
+<meta name="description" content="Portfolio von Dein Name — Softwareentwickler, Discord-Bots, Self-Hosting" />
+<meta name="color-scheme" content="dark" />
 <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-<canvas id="bg-canvas"></canvas>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-<nav class="navbar">
-  <div class="logo">YUGU<span>SAA</span></div>
-  <ul class="nav-links">
+<nav class="navbar" aria-label="Hauptnavigation">
+  <a href="#home" class="logo">DEIN<span>NAME</span></a>
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#hobbies">Hobbies</a></li>
@@ -20,84 +25,105 @@
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div id="discord-auth-area" class="discord-auth-area">
+    <button id="discord-login-btn" class="btn btn--discord">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.036A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.076.076 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.211 0 2.176 1.094 2.157 2.418 0 1.334-.946 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.211 0 2.176 1.094 2.157 2.418 0 1.334-.946 2.419-2.157 2.419z"/></svg>
+      Mit Discord anmelden
+    </button>
+  </div>
 </nav>
 
-<header id="home" class="hero">
-  <div class="hero-content">
-    <p class="hero-tag">// Softwareentwickler &amp; Self-Hoster</p>
-    <h1>Hi, ich bin <span class="glow">YUGUSAA</span></h1>
-    <p class="hero-sub">Ich baue Discord-Bots, Web-Dashboards und Self-Hosting-Setups aus Karlsruhe.</p>
-    <div class="hero-buttons">
-      <a href="#portfolio" class="btn-primary">Projekte ansehen</a>
-      <a href="#contact" class="btn-outline">Kontakt</a>
+<main id="main">
+  <header id="home" class="hero">
+    <div class="hero-content">
+      <p class="hero-tag">// Softwareentwickler &amp; Self-Hoster</p>
+      <h1>Hi, ich bin <span class="glow">Dein Name</span></h1>
+      <p class="hero-sub">Ich baue Discord-Bots, Web-Dashboards und Self-Hosting-Setups aus Karlsruhe.</p>
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn btn--primary">Projekte ansehen</a>
+        <a href="#contact" class="btn btn--outline">Kontakt</a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<section id="about" class="section">
-  <h2 class="section-title">About Me</h2>
-  <div class="glass-card">
-    <p>Hey! Ich bin <strong>yugusaa</strong>, ich entwickle Discord-Bots, Web-Dashboards und
-    Self-Hosting-Setups mit Docker, Raspberry Pi und Cloudflare Tunnels.</p>
-  </div>
-</section>
-
-<section id="hobbies" class="section">
-  <h2 class="section-title">Hobbies</h2>
-  <div class="card-grid">
-    <div class="glass-card"><h3>Gaming</h3><p>Minecraft-Server &amp; Plugin-Entwicklung, Valorant.</p></div>
-    <div class="glass-card"><h3>Home-Lab</h3><p>Docker, Raspberry Pi, Netzwerk-Experimente.</p></div>
-    <div class="glass-card"><h3>Coding</h3><p>Discord-Bots, Skripte, Web-Dashboards.</p></div>
-  </div>
-</section>
-
-<section id="skills" class="section">
-  <h2 class="section-title">Frameworks &amp; Technologies</h2>
-  <div class="skills-grid">
-    <span class="pill">Java</span><span class="pill">Python</span><span class="pill">JavaScript</span>
-    <span class="pill">Node.js</span><span class="pill">Discord.js / JDA</span><span class="pill">Docker</span>
-    <span class="pill">Linux</span><span class="pill">PowerShell</span><span class="pill">HTML/CSS</span>
-  </div>
-</section>
-
-<section id="portfolio" class="section">
-  <h2 class="section-title">Portfolio</h2>
-  <div class="card-grid">
-    <div class="glass-card project">
-      <h3>Discord Music Bot</h3>
-      <p>Java-Bot mit JDA &amp; Lavalink fuer Musik-Streaming in Sprachkanaelen.</p>
-      <a href="#" target="_blank" rel="noopener">GitHub →</a>
+  <section id="about" class="section" aria-labelledby="about-title">
+    <h2 id="about-title" class="section-title">About Me</h2>
+    <div class="glass-card prose">
+      <p>Hey! Ich bin <strong>Dein Name</strong>, ich entwickle Discord-Bots, Web-Dashboards und
+      Self-Hosting-Setups mit Docker, Raspberry Pi und Cloudflare Tunnels. Ich liebe es, Dinge zu
+      automatisieren und Infrastruktur bis ins Detail zu verstehen.</p>
     </div>
-    <div class="glass-card project">
-      <h3>Web Dashboard</h3>
-      <p>Flask/Node-Dashboard zur Server-Verwaltung mit OAuth2-Login.</p>
-      <a href="#" target="_blank" rel="noopener">GitHub →</a>
-    </div>
-    <div class="glass-card project">
-      <h3>Minecraft Plugin</h3>
-      <p>Paper/Spigot-Plugin mit Custom-Mechaniken.</p>
-      <a href="#" target="_blank" rel="noopener">GitHub →</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="discord-presence" class="section">
-  <h2 class="section-title">Discord Status</h2>
-  <div class="glass-card discord-widget">
-    <img id="lanyard-badge" src="https://lanyard.cnrad.dev/api/438200912599580675?theme=dark&bg=tr&animated=true"
-         alt="Live Discord Presence" loading="lazy" />
-  </div>
-</section>
+  <section id="hobbies" class="section" aria-labelledby="hobbies-title">
+    <h2 id="hobbies-title" class="section-title">Hobbies</h2>
+    <div class="card-grid">
+      <div class="glass-card">
+        <span class="card-icon" aria-hidden="true">🎮</span>
+        <h3>Gaming</h3>
+        <p>Minecraft-Server &amp; Plugin-Entwicklung, Valorant.</p>
+      </div>
+      <div class="glass-card">
+        <span class="card-icon" aria-hidden="true">🛠️</span>
+        <h3>Home-Lab</h3>
+        <p>Docker, Raspberry Pi, Netzwerk-Experimente.</p>
+      </div>
+      <div class="glass-card">
+        <span class="card-icon" aria-hidden="true">💻</span>
+        <h3>Coding</h3>
+        <p>Discord-Bots, Skripte, Web-Dashboards.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="contact" class="section">
-  <h2 class="section-title">Contact</h2>
-  <div class="glass-card">
-    <p>Erreichbar per <a href="https://discord.com/users/438200912599580675" target="_blank" rel="noopener" class="discord-link, glow" style="text-decoration: none;">Discord</a>.</p>
-  </div>
-</section>
+  <section id="skills" class="section" aria-labelledby="skills-title">
+    <h2 id="skills-title" class="section-title">Frameworks &amp; Technologies</h2>
+    <ul class="skills-grid" role="list">
+      <li class="pill">Java</li><li class="pill">Python</li><li class="pill">JavaScript</li>
+      <li class="pill">Node.js</li><li class="pill">Discord.js / JDA</li><li class="pill">Docker</li>
+      <li class="pill">Linux</li><li class="pill">PowerShell</li><li class="pill">HTML/CSS</li>
+    </ul>
+  </section>
+
+  <section id="portfolio" class="section" aria-labelledby="portfolio-title">
+    <h2 id="portfolio-title" class="section-title">Portfolio</h2>
+    <div class="card-grid">
+      <article class="glass-card project">
+        <h3>Discord Music Bot</h3>
+        <p>Java-Bot mit JDA &amp; Lavalink für Musik-Streaming in Sprachkanälen.</p>
+        <a href="#" class="card-link" target="_blank" rel="noopener">GitHub-Repo ansehen<span aria-hidden="true"> →</span></a>
+      </article>
+      <article class="glass-card project">
+        <h3>Web Dashboard</h3>
+        <p>Flask/Node-Dashboard zur Server-Verwaltung mit OAuth2-Login.</p>
+        <a href="#" class="card-link" target="_blank" rel="noopener">GitHub-Repo ansehen<span aria-hidden="true"> →</span></a>
+      </article>
+      <article class="glass-card project">
+        <h3>Minecraft Plugin</h3>
+        <p>Paper/Spigot-Plugin mit Custom-Mechaniken.</p>
+        <a href="#" class="card-link" target="_blank" rel="noopener">GitHub-Repo ansehen<span aria-hidden="true"> →</span></a>
+      </article>
+    </div>
+  </section>
+
+  <section id="discord-presence" class="section" aria-labelledby="discord-presence-title">
+    <h2 id="discord-presence-title" class="section-title">Discord Status</h2>
+    <div class="glass-card discord-widget">
+      <img id="lanyard-badge" src="https://lanyard.cnrad.dev/api/DEINE_DISCORD_ID?theme=dark&bg=tr&animated=true"
+           alt="Live Discord Präsenz von Dein Name" loading="lazy" width="340" height="120" />
+    </div>
+  </section>
+
+  <section id="contact" class="section" aria-labelledby="contact-title">
+    <h2 id="contact-title" class="section-title">Contact</h2>
+    <div class="glass-card prose">
+      <p>Erreichbar per <a href="mailto:kontakt@deinedomain.de">E-Mail</a> oder über den Discord-Login oben.</p>
+    </div>
+  </section>
+</main>
 
 <footer>
-  <p>© <span id="year"></span> Yugusaa. Gebaut mit Sicherheit &amp; Liebe zum Detail.</p>
+  <p>© <span id="year"></span> Dein Name. Gebaut mit Sicherheit &amp; Liebe zum Detail.</p>
 </footer>
 
 <script src="/js/main.js"></script>
