@@ -25,7 +25,7 @@ jobs:
           fetch-depth: 0 # komplette Git-Historie fuer vollstaendigen Scan
 
       - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # GITLEAKS_LICENSE nur fuer Organisations-Repos noetig, nicht fuer persoenliche Accounts
